@@ -11,7 +11,7 @@ require("rpart.plot")
 setwd("C:/MCD_LABIMP1") # Establezco el Working Directory
 
 # cargo el dataset pequeno vivencial del disco local
-dataset <- fread("~/datasets/vivencial_dataset_pequeno.csv")
+dataset <- fread("C:/MCD_LABIMP1/datasets/vivencial_dataset_pequeno.csv")
 
 dtrain <- dataset[foto_mes == 202107] # defino donde voy a entrenar
 dapply <- dataset[foto_mes == 202109] # defino donde voy a aplicar el modelo
