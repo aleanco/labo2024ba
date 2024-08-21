@@ -8,11 +8,12 @@ require("rpart")
 require("rpart.plot")
 
 # Aqui se debe poner la carpeta de la materia de SU computadora local
-setwd("/home/alejandra_anconetani/datasets") # Establezco el Working Directory
+#setwd("/home/alejandra_anconetani/datasets") # Establezco el Working Directory
+setwd("~/buckets/b1") # Establezco el Working Directory
 ##script_paht<- file.path(dirname(rstudioapi::getSourceEditorContext()$path), "")
 # cargo el dataset pequeno vivencial del disco local
-##dataset <- fread("C:/datasets/vivencial_dataset_pequeno.csv")
-dataset <- fread("/home/alejandra_anconetani/datasets/vivencial_dataset_pequeno.csv")
+dataset <- fread("~/buckets/b1/datasets/vivencial_dataset_pequeno.csv")
+##dataset <- fread("/home/alejandra_anconetani/datasets/vivencial_dataset_pequeno.csv")
 
 dtrain <- dataset[foto_mes == 202107] # defino donde voy a entrenar
 dapply <- dataset[foto_mes == 202109] # defino donde voy a aplicar el modelo
@@ -34,9 +35,9 @@ modelo <- rpart(
   data = dtrain, # los datos donde voy a entrenar
   xval = 0,
   cp = -0.3, # esto significa no limitar la complejidad de los splits
-  minsplit = 1500, # minima cantidad de registros para que se haga el split
-  minbucket = 400, # tamaño minimo de una hoja
-  maxdepth = 5  # profundidad maxima del arbol
+  minsplit = 1800, # minima cantidad de registros para que se haga el split
+  minbucket = 600, # tamaño minimo de una hoja
+  maxdepth = 3  # profundidad maxima del arbol
 )
 
 # grafico el arbol
