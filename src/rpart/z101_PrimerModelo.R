@@ -8,35 +8,44 @@ require("rpart")
 require("rpart.plot")
 
 # Aqui se debe poner la carpeta de la materia de SU computadora local
-setwd("/home/alejandra_anconetani/datasets") # Establezco el Working Directory
+#setwd("/home/alejandra_anconetani/datasets") # Establezco el Working Directory
+setwd("~/buckets/b1") # Establezco el Working Directory
 ##script_paht<- file.path(dirname(rstudioapi::getSourceEditorContext()$path), "")
 # cargo el dataset pequeno vivencial del disco local
-##dataset <- fread("C:/datasets/vivencial_dataset_pequeno.csv")
-dataset <- fread("/home/alejandra_anconetani/datasets/vivencial_dataset_pequeno.csv")
+dataset <- fread("~/buckets/b1/datasets/vivencial_dataset_pequeno.csv")
+##dataset <- fread("/home/alejandra_anconetani/datasets/vivencial_dataset_pequeno.csv")
 
 dtrain <- dataset[foto_mes == 202107] # defino donde voy a entrenar
 dapply <- dataset[foto_mes == 202109] # defino donde voy a aplicar el modelo
 
 # genero el modelo,  aqui se construye el arbol
 # quiero predecir clase_ternaria a partir de el resto de las variables
-modelo <- rpart(
-    formula = "clase_ternaria ~ .",
-    data = dtrain, # los datos donde voy a entrenar
-    xval = 0,
-    cp = -0.3, # esto significa no limitar la complejidad de los splits
-    minsplit = 0, # minima cantidad de registros para que se haga el split
-    minbucket = 1, # tamaño minimo de una hoja
-    maxdepth = 3  # profundidad maxima del arbol
+## iniciales del script LAB
+param <- list(
+  "cp" = -0.3,
+  "minsplit" = 0,
+  "minbucket" = 1,
+  "maxdepth" = 3
 )
+## los que voy cambiando para las pruebas 
+param <- list(
+  "cp" = -0.3,
+  "minsplit" = 800,
+  "minbucket" = 340,
+  "maxdepth" = 30
+)
+
 ## AA 20-08-2024 
+
 modelo <- rpart(
   formula = "clase_ternaria ~ .",
   data = dtrain, # los datos donde voy a entrenar
   xval = 0,
-  cp = -0.3, # esto significa no limitar la complejidad de los splits
-  minsplit = 1500, # minima cantidad de registros para que se haga el split
-  minbucket = 400, # tamaño minimo de una hoja
-  maxdepth = 5  # profundidad maxima del arbol
+  control = param
+##  cp = -0.5, # esto significa no limitar la complejidad de los splits
+##  minsplit = 900, # minima cantidad de registros para que se haga el split
+## minbucket = 440, # tamaño minimo de una hoja
+## maxdepth = 5  # profundidad maxima del arbol
 )
 
 # grafico el arbol
@@ -53,6 +62,7 @@ prediccion <- predict(
     type = "prob"
 )
 
+confusionMatrix(prediccion,dapply$TipoVidrio) 
 # prediccion es una matriz con TRES columnas,
 # llamadas "BAJA+1", "BAJA+2"  y "CONTINUA"
 # cada columna es el vector de probabilidades
@@ -71,7 +81,7 @@ dir.create("./exp/KA2001")
 
 # solo los campos para Kaggle
 fwrite(dapply[, list(numero_de_cliente, Predicted)],
-        file = "./exp/KA2001/K101_003_viv.csv",
+        file = "./exp/KA2001/K101_007_viv.csv",
         sep = ","
 )
 
