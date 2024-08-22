@@ -47,13 +47,14 @@ modelo <- rpart(
 ## minbucket = 440, # tamaño minimo de una hoja
 ## maxdepth = 5  # profundidad maxima del arbol
 )
-
+## xval es el parametro de CrossValidation con 0 no lo ejecuta
 # grafico el arbol
 prp(modelo,
     extra = 101, digits = -5,
     branch = 1, type = 4, varlen = 0, faclen = 0
 )
-
+## agregado por AA para imprimir el modelo 
+##plotcp (modelo)  
 
 # aplico el modelo a los datos nuevos
 prediccion <- predict(
@@ -61,8 +62,7 @@ prediccion <- predict(
     newdata = dapply,
     type = "prob"
 )
-
-confusionMatrix(prediccion,dapply$TipoVidrio) 
+ 
 # prediccion es una matriz con TRES columnas,
 # llamadas "BAJA+1", "BAJA+2"  y "CONTINUA"
 # cada columna es el vector de probabilidades
