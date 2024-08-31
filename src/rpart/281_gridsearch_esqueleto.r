@@ -142,15 +142,15 @@ tb_grid_search_detalle <- data.table(
 
 # itero por los loops anidados para cada hiperparametro
 corrida = 1 
-for (vcp in c(-0.5, -0.3,  0, 0.1)){
-  for (vmax_depth in c(4, 6, 8, 10, 12, 14)) {
-    for (vmin_split in c(1000, 800, 600, 400, 200, 100, 50, 20, 10)) {
+for (vcp in c(-1 , -0.5, -0.4, -0.3)) {
+  for (vmax_depth in c(4, 5, 6,7)) {
+    for (vmin_split in c(1000, 900, 800,  700 , 600 )) {
     # notar como se agrega
 
     # vminsplit  minima cantidad de registros en un nodo para hacer el split
     
     # Calcula vmin_bucket / Tiene que ser un valor que sea igual a la mitad de Min Split y que siempre este por encima de 5 
-    vmin_bucket <- ifelse(vmin_split / 2 < 5, 5, vmin_split / 2)
+    vmin_bucket <- ifelse(vmin_split / 3 < 5, 5, vmin_split / 3 )
     corrida = corrida + 1 
     print(paste("corrida--> ", corrida))
     param_basicos <- list(
