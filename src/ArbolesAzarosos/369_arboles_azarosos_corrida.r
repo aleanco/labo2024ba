@@ -11,20 +11,21 @@ gc() # Garbage Collection
 
 require("data.table")
 require("rpart")
+require("rlist")
 require("yaml")
 
 # parametros experimento
 PARAM <- list()
-PARAM$experimento <- 3611#3610
+PARAM$experimento <- 3690
 
 # parametros rpart
 
 #  cargue aqui los hiperparametros elegidos
 PARAM$rpart <- data.table( 
-  "cp" = -1,
-  "minsplit" = 250,
-  "minbucket" = 20,
-  "maxdepth" = 8
+  "cp" = c(-1, -1, -1, -1, -1),
+  "minsplit" = c(25, 1000, 1000, 250, 100),
+  "minbucket" = c(10, 5, 5, 50, 50),
+  "maxdepth" = c(6, 6, 8, 4, 8)
 )
 
 # parametros  arbol
@@ -38,6 +39,37 @@ PARAM$feature_fraction <- 0.5
 #  pero ganancias marginales
 PARAM$num_trees_max <- 512
 
+#------------------------------------------------------------------------------
+# graba a un archivo los componentes de lista
+# para el primer registro, escribe antes los titulos
+
+loguear <- function(reg, arch = NA, folder = "./work/", ext = ".txt",
+                    verbose = TRUE) {
+  archivo <- arch
+  if (is.na(arch)) archivo <- paste0(substitute(reg), ext)
+
+  # Escribo los titulos
+  if (!file.exists(archivo)) {
+    linea <- paste0(
+      "fecha\t",
+      paste(list.names(reg), collapse = "\t"), "\n"
+    )
+
+    cat(linea, file = archivo)
+  }
+
+  # la fecha y hora
+  linea <- paste0(
+    format(Sys.time(), "%Y%m%d %H%M%S"), "\t",
+    gsub(", ", "\t", toString(reg)), "\n"
+  )
+
+  # grabo al archivo
+  cat(linea, file = archivo, append = TRUE)
+
+  # imprimo por pantalla
+  if (verbose) cat(linea)
+}
 #------------------------------------------------------------------------------
 #------------------------------------------------------------------------------
 # Aqui comienza el programa
@@ -85,6 +117,7 @@ campos_buenos <- copy(setdiff(colnames(dtrain), c("clase_ternaria")))
 # Genero las salidas
 for( icorrida in seq(nrow(PARAM$rpart)) ){
 
+  registro <- PARAM$rpart[ icorrida ]
   cat( "Corrida ", icorrida, " ; " )
 
   # aqui se va acumulando la probabilidad del ensemble
@@ -148,10 +181,10 @@ for( icorrida in seq(nrow(PARAM$rpart)) ){
       # preparo todo para el submit
       comentario <- paste0( "'",
         "trees=", arbolito,
-        " cp=", PARAM$rpart$cp,
-        " minsplit=", PARAM$rpart$minsplit,
-        " minbucket=", PARAM$rpart$minbucket,
-        " maxdepth=", PARAM$rpart$maxdepth,
+        " cp=", registro$cp,
+        " minsplit=", registro$minsplit,
+        " minbucket=", registro$minbucket,
+        " maxdepth=", registro$maxdepth,
         "'"
       )
 
@@ -163,11 +196,12 @@ for( icorrida in seq(nrow(PARAM$rpart)) ){
       )
 
       ganancia <- system( comando, intern=TRUE )
-      cat( paste0( ganancia, "\t", nom_arch_kaggle, "\n"),
-        file="tb_ganancias.txt",
-        append=TRUE
+      linea <- c( 
+        list( "ganancia"= ganancia, "arbolitos"=arbolito),
+        registro
       )
 
+      loguear( linea, arch="tb_ganancias.txt" )
     }
 
     cat(arbolito, " ")
