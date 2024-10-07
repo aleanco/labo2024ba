@@ -437,7 +437,7 @@ wf_septiembre <- function( pnombrewf )
   ts9 <- TS_strategy_base9()
   ht <- HT_tuning_base()
 
-  fm <- FM_final_models_lightgbm( c(ht, ts9), ranks=c(1), qsemillas=20 ) #5 05/10/2024 es el S con 20 semillas
+  fm <- FM_final_models_lightgbm( c(ht, ts9), ranks=c(1), qsemillas=20 ) ## 05-10-2024 
   SC_scoring( c(fm, ts9) )
   KA_evaluate_kaggle()
 
