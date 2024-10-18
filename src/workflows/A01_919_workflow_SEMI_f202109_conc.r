@@ -276,27 +276,27 @@ TS_strategy_base9 <- function( pinputexps )
     202012, 202011, 202010, 202009, 202008, 202007, 202006 ,  
     # 202006  Excluyo por variables rotas
     202005, 202004, 202003, 202002, 202001,
-    201912, 201911
+    201912, 201911,
     # 201910 Excluyo por variables rotas
     #201909, 201908, 201907, 201906,
     # 201905  Excluyo por variables rotas
-    )
+   201905,  201904   )
 
 
   param_local$train$training <- c(
-     202104,  202103, 202102, 202101, 
-    202012, 202011, 202010, 202009, 202008, 202007, 
+     202104, 202103, 202102, 202101, 
+    202012, 202011, 202010, 202009, 202008, 202007,
     # 202006  Excluyo por variables rotas
     202006, 202005, 202004, 202003, 202002, 202001,
-    201912, 201911 
+    201912, 201911,
     # 201910 Excluyo por variables rotas
     #201909, 201908, 201907, 201906,
     # 201905  Excluyo por variables rotas
-    #201905, 201904 
+    201905, 201904 
     )
 
-  param_local$train$validation <- c(202104 , 202107)
-  param_local$train$testing <- c(202105, 202106)
+  param_local$train$validation <- c(202104 , 202105)
+  param_local$train$testing <- c(202106, 202107)
 
 
   # Atencion  0.2  de  undersampling de la clase mayoritaria,  los CONTINUA

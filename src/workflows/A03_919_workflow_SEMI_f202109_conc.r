@@ -148,11 +148,11 @@ FEhist_base <- function( pinputexps)
   param_local$Tendencias1$run <- TRUE  # FALSE, no corre nada de lo que sigue
   param_local$Tendencias1$ventana <- 6
   param_local$Tendencias1$tendencia <- TRUE
-  param_local$Tendencias1$minimo <- FALSE
-  param_local$Tendencias1$maximo <- FALSE
-  param_local$Tendencias1$promedio <- FALSE
-  param_local$Tendencias1$ratioavg <- FALSE
-  param_local$Tendencias1$ratiomax <- FALSE
+  param_local$Tendencias1$minimo <- TRUE # AA1710 FALSE
+  param_local$Tendencias1$maximo <- TRUE # AA1710 FALSE
+  param_local$Tendencias1$promedio <- TRUE # AA1710 FALSE
+  param_local$Tendencias1$ratioavg <-TRUE # AA1710  FALSE
+  param_local$Tendencias1$ratiomax <- TRUE # AA1710 FALSE
 
   # no me engraso las manos con las tendencias de segundo orden
   param_local$Tendencias2$run <- FALSE
@@ -273,30 +273,30 @@ TS_strategy_base9 <- function( pinputexps )
   param_local$final_train$clase_minoritaria <- c( "BAJA+1", "BAJA+2")
   param_local$final_train$training <- c(
      202104, 202103, 202102, 202101, 
-    202012, 202011, 202010, 202009, 202008, 202007, 202006 ,  
+    202012, 202011, 202010, 202009, 202008, 202007,  
     # 202006  Excluyo por variables rotas
     202005, 202004, 202003, 202002, 202001,
-    201912, 201911
+    201912, 201911,
     # 201910 Excluyo por variables rotas
     #201909, 201908, 201907, 201906,
     # 201905  Excluyo por variables rotas
-    )
+   201904   )
 
 
   param_local$train$training <- c(
-     202104,  202103, 202102, 202101, 
-    202012, 202011, 202010, 202009, 202008, 202007, 
+     202104, 202103, 202102, 202101, 
+    202012, 202011, 202010, 202009, 202008, 202007,
     # 202006  Excluyo por variables rotas
-    202006, 202005, 202004, 202003, 202002, 202001,
-    201912, 201911 
+    202005, 202004, 202003, 202002, 202001,
+    201912, 201911,
     # 201910 Excluyo por variables rotas
     #201909, 201908, 201907, 201906,
     # 201905  Excluyo por variables rotas
-    #201905, 201904 
+    201904 
     )
 
-  param_local$train$validation <- c(202104 , 202107)
-  param_local$train$testing <- c(202105, 202106)
+  param_local$train$validation <- c(202104 , 202105)
+  param_local$train$testing <- c(202106, 202107)
 
 
   # Atencion  0.2  de  undersampling de la clase mayoritaria,  los CONTINUA
