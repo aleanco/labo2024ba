@@ -141,7 +141,7 @@ FEhist_base <- function( pinputexps)
   param_local$meta$script <- "/src/wf-etapas/z1501_FE_historia.r"
 
   param_local$lag1 <- TRUE
-  param_local$lag2 <- FALSE # no me engraso con los lags de orden 2
+  param_local$lag2 <- TRUE # no me engraso con los lags de orden 2
   param_local$lag3 <- FALSE # no me engraso con los lags de orden 3
 
   # no me engraso las manos con las tendencias
@@ -364,23 +364,13 @@ HT_tuning_semillerio <- function( pinputexps, semillerio, bo_iteraciones, bypass
     skip_drop = 0.5, # 0.0 <= skip_drop <= 1.0
 
     extra_trees = FALSE,
-    
-   
-    
     # Parte variable
-    ##learning_rate = c( 0.2, 1.2 ),
-    ##feature_fraction = c( 0.01, 0.9 ),
+    learning_rate = c( 0.2, 1.2 ),
+    feature_fraction = c( 0.01, 0.9 ),
 
-    ##num_iterations_log = c(2, 8),  # directo a num_iterations 2^ 
-   ## leaf_size_log = c( -11, -5),   # deriva en min_data_in_leaf
-    ##coverage_log = c( -4, 0 )   ,   # deriva en num_leaves
-    
-    # Parte variable ( Experimento Ivan + sofi + Dani)
-    #learning_rate = c( 0.02, 0.3 ), ## Corrida original
-    feature_fraction = c( 0.05, 0.99),
-    num_leaves = c( 8L, 8196L,  "integer" ), 
-    min_data_in_leaf = c( 5L, 50000L, "integer" ) 
-    
+    num_iterations_log = c(2, 8),  # directo a num_iterations 2^ 
+    leaf_size_log = c( -11, -5),   # deriva en min_data_in_leaf
+    coverage_log = c( -4, 0 )      # deriva en num_leaves
   )
 
 

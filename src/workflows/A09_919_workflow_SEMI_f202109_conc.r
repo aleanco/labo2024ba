@@ -155,14 +155,14 @@ FEhist_base <- function( pinputexps)
   param_local$Tendencias1$ratiomax <- TRUE # AA1710 FALSE
   
   # no me engraso las manos con las tendencias de segundo orden
-  param_local$Tendencias2$run <- FALSE
+  param_local$Tendencias2$run <- TRUE  # FALSE
   param_local$Tendencias2$ventana <- 12
-  param_local$Tendencias2$tendencia <- FALSE
-  param_local$Tendencias2$minimo <- FALSE
-  param_local$Tendencias2$maximo <- FALSE
-  param_local$Tendencias2$promedio <- FALSE
-  param_local$Tendencias2$ratioavg <- FALSE
-  param_local$Tendencias2$ratiomax <- FALSE
+  param_local$Tendencias2$tendencia <-TRUE  #  FALSE
+  param_local$Tendencias2$minimo <- TRUE  # FALSE
+  param_local$Tendencias2$maximo <- TRUE  # FALSE
+  param_local$Tendencias2$promedio <- TRUE  # FALSE
+  param_local$Tendencias2$ratioavg <- TRUE  # FALSE
+  param_local$Tendencias2$ratiomax <- TRUE  # FALSE
   
 
   param_local$semilla <- NULL # no usa semilla, es deterministico
@@ -364,23 +364,13 @@ HT_tuning_semillerio <- function( pinputexps, semillerio, bo_iteraciones, bypass
     skip_drop = 0.5, # 0.0 <= skip_drop <= 1.0
 
     extra_trees = FALSE,
-    
-   
-    
     # Parte variable
-    ##learning_rate = c( 0.2, 1.2 ),
-    ##feature_fraction = c( 0.01, 0.9 ),
+    learning_rate = c( 0.2, 1.2 ),
+    feature_fraction = c( 0.01, 0.9 ),
 
-    ##num_iterations_log = c(2, 8),  # directo a num_iterations 2^ 
-   ## leaf_size_log = c( -11, -5),   # deriva en min_data_in_leaf
-    ##coverage_log = c( -4, 0 )   ,   # deriva en num_leaves
-    
-    # Parte variable ( Experimento Ivan + sofi + Dani)
-    #learning_rate = c( 0.02, 0.3 ), ## Corrida original
-    feature_fraction = c( 0.05, 0.99),
-    num_leaves = c( 8L, 8196L,  "integer" ), 
-    min_data_in_leaf = c( 5L, 50000L, "integer" ) 
-    
+    num_iterations_log = c(2, 8),  # directo a num_iterations 2^ 
+    leaf_size_log = c( -11, -5),   # deriva en min_data_in_leaf
+    coverage_log = c( -4, 0 )      # deriva en num_leaves
   )
 
 
