@@ -11,9 +11,9 @@ require("data.table")
 if( !exists("envg") ) envg <- env()  # global environment 
 
 envg$EXPENV <- list()
-envg$EXPENV$bucket_dir <- "~/buckets/b1"
-envg$EXPENV$exp_dir <- "~/buckets/b1/expw/"
-envg$EXPENV$wf_dir <- "~/buckets/b1/flow/"
+envg$EXPENV$bucket_dir <- "~/buckets/b2"
+envg$EXPENV$exp_dir <- "~/buckets/b2/expw/"
+envg$EXPENV$wf_dir <- "~/buckets/b2/flow/"
 envg$EXPENV$repo_dir <- "~/labo2024ba/"
 envg$EXPENV$datasets_dir <- "~/buckets/b1/datasets/"
 envg$EXPENV$arch_ambiente <- "miAmbiente.yml"
@@ -348,8 +348,8 @@ HT_tuning_semillerio <- function( pinputexps, semillerio, bo_iteraciones, bypass
     max_depth = -1L, # -1 significa no limitar,  por ahora lo dejo fijo
     min_gain_to_split = 0.0, # min_gain_to_split >= 0.0
     min_sum_hessian_in_leaf = 0.001, #  min_sum_hessian_in_leaf >= 0.0
-   #lambda_l1 = 0.0, # lambda_l1 >= 0.0
-   #lambda_l2 = 0.0, # lambda_l2 >= 0.0
+    lambda_l1 = 0.0, # lambda_l1 >= 0.0
+    lambda_l2 = 0.0, # lambda_l2 >= 0.0
     max_bin = 31L, # lo debo dejar fijo, no participa de la BO
     early_stopping = 0,  # No se hace early stopping
 
@@ -367,8 +367,6 @@ HT_tuning_semillerio <- function( pinputexps, semillerio, bo_iteraciones, bypass
     # Parte variable
     learning_rate = c( 0.2, 1.2 ),
     feature_fraction = c( 0.01, 0.9 ),
-    lambda_l1 = c(1.0, 1000.0), ##AA 19010
-    lambda_l2 = c(1.0, 1000.0), ##AA 19010
     num_iterations_log = c(2, 8),  # directo a num_iterations 2^ 
     leaf_size_log = c( -11, -5),   # deriva en min_data_in_leaf
     coverage_log = c( -4, 0 )      # deriva en num_leaves
