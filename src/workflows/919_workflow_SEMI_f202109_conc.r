@@ -368,18 +368,14 @@ HT_tuning_semillerio <- function( pinputexps, semillerio, bo_iteraciones, bypass
    
     
     # Parte variable
-    ##learning_rate = c( 0.2, 1.2 ),
-    ##feature_fraction = c( 0.01, 0.9 ),
+   learning_rate = c( 0.2, 1.2 ),
+   feature_fraction = c( 0.01, 0.9 ),
 
-    ##num_iterations_log = c(2, 8),  # directo a num_iterations 2^ 
-   ## leaf_size_log = c( -11, -5),   # deriva en min_data_in_leaf
-    ##coverage_log = c( -4, 0 )   ,   # deriva en num_leaves
+    num_iterations_log = c(2, 8),  # directo a num_iterations 2^ 
+    leaf_size_log = c( -11, -5),   # deriva en min_data_in_leaf
+    coverage_log = c( -4, 0 )     # deriva en num_leaves
     
-    # Parte variable ( Experimento Ivan + sofi + Dani)
-    #learning_rate = c( 0.02, 0.3 ), ## Corrida original
-    feature_fraction = c( 0.05, 0.99),
-    num_leaves = c( 8L, 8196L,  "integer" ), 
-    min_data_in_leaf = c( 5L, 50000L, "integer" ) 
+  
     
   )
 
