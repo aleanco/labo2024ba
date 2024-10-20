@@ -366,7 +366,7 @@ HT_tuning_semillerio <- function( pinputexps, semillerio, bo_iteraciones, bypass
     extra_trees = FALSE,
     # Parte variable
    # learning_rate = c( 0.2, 1.2 ), AA 19-10ñ-2024 
-    learning_rate = c(0.02, 0.15),
+    learning_rate = c(0.02, 0.50),
     feature_fraction = c( 0.01, 0.9 ),
     lambda_l1 = c(1.0, 1000.0),
     lambda_l2 = c(1.0, 1000.0),

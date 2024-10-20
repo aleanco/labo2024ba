@@ -366,13 +366,13 @@ HT_tuning_semillerio <- function( pinputexps, semillerio, bo_iteraciones, bypass
     extra_trees = FALSE,
     # Parte variable
    # learning_rate = c( 0.2, 1.2 ), AA 19-10ñ-2024 
-    learning_rate = c(0.02, 0.15),
+    learning_rate = c(0.01 , 0.1 ) , ## AA c(0.02, 0.15),
     feature_fraction = c( 0.01, 0.9 ),
-    lambda_l1 = c(1.0, 1000.0),
-    lambda_l2 = c(1.0, 1000.0),
+    lambda_l1 = c(10.0, 500.0) , ## c(1.0, 1000.0),
+    lambda_l2 = c(10.0, 500.0) , ## c(1.0, 1000.0),
     num_iterations_log = c(2, 8),  # directo a num_iterations 2^ 
     leaf_size_log =  c( -11, -5),   # deriva en min_data_in_leaf
-     coverage_log = c( -4, 0 )      # deriva en num_leaves
+     coverage_log = c( -5, 1 )      # deriva en num_leaves
   )
 
 
