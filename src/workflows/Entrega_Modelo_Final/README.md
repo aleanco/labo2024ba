@@ -1,5 +1,5 @@
 # Entrega Final Laboratorio de Implementación I - Maestría en Ciencia de Datos | Universidad Austral
-## Profesores: Arrieta, Fernando - Denicolay, Gustavo 
+## Profesores: Denicolay, Gustavo - Arrieta, Fernando - 
 ## Alejandra Anconetani
 ### Instructivo de replicabilidad competencia Kaggle Conceptual
 
