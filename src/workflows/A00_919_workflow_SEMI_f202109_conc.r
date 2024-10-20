@@ -148,12 +148,12 @@ FEhist_base <- function( pinputexps)
   param_local$Tendencias1$run <- TRUE  # FALSE, no corre nada de lo que sigue
   param_local$Tendencias1$ventana <- 6
   param_local$Tendencias1$tendencia <- TRUE
-  param_local$Tendencias1$minimo <- TRUE # AA1710 FALSE
-  param_local$Tendencias1$maximo <- TRUE # AA1710 FALSE
-  param_local$Tendencias1$promedio <- TRUE # AA1710 FALSE
-  param_local$Tendencias1$ratioavg <-TRUE # AA1710  FALSE
-  param_local$Tendencias1$ratiomax <- TRUE # AA1710 FALSE
-  
+  param_local$Tendencias1$minimo <- FALSE
+  param_local$Tendencias1$maximo <- FALSE
+  param_local$Tendencias1$promedio <- FALSE
+  param_local$Tendencias1$ratioavg <- FALSE
+  param_local$Tendencias1$ratiomax <- FALSE
+
   # no me engraso las manos con las tendencias de segundo orden
   param_local$Tendencias2$run <- FALSE
   param_local$Tendencias2$ventana <- 12
@@ -163,7 +163,6 @@ FEhist_base <- function( pinputexps)
   param_local$Tendencias2$promedio <- FALSE
   param_local$Tendencias2$ratioavg <- FALSE
   param_local$Tendencias2$ratiomax <- FALSE
-  
 
   param_local$semilla <- NULL # no usa semilla, es deterministico
 
@@ -190,8 +189,8 @@ FErf_attributes_base <- function( pinputexps, ratio, desvio)
     # parametros que se pueden cambiar
     num_iterations = 20,
     num_leaves  = 16,
-    min_data_in_leaf =  1000,
-    feature_fraction_bynode  =  0.2,
+    min_data_in_leaf = 1000,
+    feature_fraction_bynode  = 0.2,
 
     # para que LightGBM emule Random Forest
     boosting = "rf",
@@ -211,7 +210,7 @@ FErf_attributes_base <- function( pinputexps, ratio, desvio)
     min_gain_to_split = 0.0,
     min_sum_hessian_in_leaf = 0.001,
     lambda_l1 = 0.0,
-    lambda_l2 = 0.0,  
+    lambda_l2 = 0.0,
 
     pos_bagging_fraction = 1.0,
     neg_bagging_fraction = 1.0,
@@ -273,31 +272,32 @@ TS_strategy_base9 <- function( pinputexps )
   param_local$final_train$undersampling <- 1.0
   param_local$final_train$clase_minoritaria <- c( "BAJA+1", "BAJA+2")
   param_local$final_train$training <- c(
-     202104, 202103, 202102, 202101, 
-    202012, 202011, 202010, 202009, 202008, 202007, 202006 ,  
+    202107, 202106, 202105, 202104, 202103, 202102, 202101, 
+    202012, 202011, 202010, 202009, 202008, 202007, 
     # 202006  Excluyo por variables rotas
     202005, 202004, 202003, 202002, 202001,
-    201912, 201911
+    201912, 201911,
     # 201910 Excluyo por variables rotas
-    #201909, 201908, 201907, 201906,
+    201909, 201908, 201907, 201906,
     # 201905  Excluyo por variables rotas
-    )
+    201904, 201903
+  )
 
 
   param_local$train$training <- c(
-     202104,  202103, 202102, 202101, 
-    202012, 202011, 202010, 202009, 202008, 202007, 
+    202105, 202104, 202103, 202102, 202101, 
+    202012, 202011, 202010, 202009, 202008, 202007,
     # 202006  Excluyo por variables rotas
-    202006, 202005, 202004, 202003, 202002, 202001,
-    201912, 201911 
+    202005, 202004, 202003, 202002, 202001,
+    201912, 201911,
     # 201910 Excluyo por variables rotas
-    #201909, 201908, 201907, 201906,
+    201909, 201908, 201907, 201906,
     # 201905  Excluyo por variables rotas
-    #201905, 201904 
+    201904, 201903, 201902, 201901
     )
 
-  param_local$train$validation <- c(202104 , 202107)
-  param_local$train$testing <- c(202105, 202106)
+  param_local$train$validation <- c(202106)
+  param_local$train$testing <- c(202107)
 
 
   # Atencion  0.2  de  undersampling de la clase mayoritaria,  los CONTINUA
@@ -348,8 +348,8 @@ HT_tuning_semillerio <- function( pinputexps, semillerio, bo_iteraciones, bypass
     max_depth = -1L, # -1 significa no limitar,  por ahora lo dejo fijo
     min_gain_to_split = 0.0, # min_gain_to_split >= 0.0
     min_sum_hessian_in_leaf = 0.001, #  min_sum_hessian_in_leaf >= 0.0
-    #lambda_l1 = 0.0, # lambda_l1 >= 0.0
-    #lambda_l2 = 0.0, # lambda_l2 >= 0.0
+    lambda_l1 = 0.0, # lambda_l1 >= 0.0
+    lambda_l2 = 0.0, # lambda_l2 >= 0.0
     max_bin = 31L, # lo debo dejar fijo, no participa de la BO
     early_stopping = 0,  # No se hace early stopping
 
@@ -365,14 +365,12 @@ HT_tuning_semillerio <- function( pinputexps, semillerio, bo_iteraciones, bypass
 
     extra_trees = FALSE,
     # Parte variable
-   # learning_rate = c( 0.2, 1.2 ), AA 19-10ñ-2024 
-    learning_rate = c(0.02, 0.15),
+    learning_rate = c( 0.2, 1.2 ),
     feature_fraction = c( 0.01, 0.9 ),
-    lambda_l1 = c(1.0, 1000.0),
-    lambda_l2 = c(1.0, 1000.0),
+
     num_iterations_log = c(2, 8),  # directo a num_iterations 2^ 
-    leaf_size_log =  c( -11, -5),   # deriva en min_data_in_leaf
-     coverage_log = c( -4, 0 )      # deriva en num_leaves
+    leaf_size_log = c( -11, -5),   # deriva en min_data_in_leaf
+    coverage_log = c( -4, 0 )      # deriva en num_leaves
   )
 
 
