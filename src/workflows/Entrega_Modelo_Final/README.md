@@ -1,7 +1,7 @@
 # Entrega Final Laboratorio de Implementación I - Maestría en Ciencia de Datos | Universidad Austral
 ## Profesores: Arrieta, Fernando - Denicolay, Gustavo 
 ## Alejandra Anconetani
-### Instructivo de replicabilidad competencia Kaggle
+### Instructivo de replicabilidad competencia Kaggle Conceptual
 
 1. De la carpeta https://github.com/aleanco/labo2024ba/edit/main/src/workflows/Entrega_Modelo_Final/, copiar el archivo "miAmbiente.yml" y pegarlo en la ruta ~/buckets/b1.
 
