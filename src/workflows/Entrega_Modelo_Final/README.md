@@ -9,5 +9,5 @@
 
 3. Una vez finalizado el workflow, y habiéndose generado todas las subidas a Kaggle, entre sus submissions, elegir para la entrega final el modelo "KA-XXXX_01_025_r1_02200.CSV". Siendo "XXXX" el número de carpeta que genera la corrida en Home/buckets/b1/expw/KA-XXXX.
    
-
+Queda en el directorio el CSV que seleccione en Kaggle.
 
