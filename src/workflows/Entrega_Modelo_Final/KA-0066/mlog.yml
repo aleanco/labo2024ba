@@ -1,0 +1,73 @@
+larch:
+  qty: 1.0
+  archivos:
+    ganancias_log.txt:
+      nom_arch: ganancias_log.txt
+      cols_fijas:
+        expw: /home/alejandra_anconetani/buckets/b1/expw/KA-0066
+      mlflow:
+        contador: 14.0
+        exp_name: /futu-079b6d
+        run_name: KA-0066
+        padre_creado: yes
+        exp_id: '8'
+        padre_exp:
+          run_uuid: b49ee67ffdca429b999ea5500924a144
+          experiment_id: '8'
+          run_name: glamorous-squid-5
+          user_id: alejandra_anconetani
+          status: RUNNING
+          start_time: 1.7293722e+09
+          artifact_uri: mlflow-artifacts:/8/b49ee67ffdca429b999ea5500924a144/artifacts
+          lifecycle_stage: active
+          run_id: b49ee67ffdca429b999ea5500924a144
+          end_time: .na
+          metrics: .na
+          params: .na
+          tags:
+          - key:
+            - mlflow.user
+            - mlflow.source.name
+            - mlflow.source.type
+            - mlflow.runName
+            value:
+            - alejandra_anconetani
+            - z2602_KA_evaluate_kaggle_SEMI.r
+            - LOCAL
+            - glamorous-squid-5
+        padre_activo: no
+        hijo_exp:
+          run_uuid: 42708fa3e6ec4f60a5a75d450524e333
+          experiment_id: '8'
+          run_name: stately-boar-839
+          user_id: alejandra_anconetani
+          status: RUNNING
+          start_time: 1.7293725e+09
+          artifact_uri: mlflow-artifacts:/8/42708fa3e6ec4f60a5a75d450524e333/artifacts
+          lifecycle_stage: active
+          run_id: 42708fa3e6ec4f60a5a75d450524e333
+          end_time: .na
+          metrics: .na
+          params: .na
+          tags:
+          - key:
+            - mlflow.user
+            - mlflow.source.name
+            - mlflow.source.type
+            - mlflow.parentRunId
+            - mlflow.runName
+            value:
+            - alejandra_anconetani
+            - z2602_KA_evaluate_kaggle_SEMI.r
+            - LOCAL
+            - b49ee67ffdca429b999ea5500924a144
+            - stately-boar-839
+mlflow:
+  iniciado: yes
+  conn:
+    tracking_username: labo2024ba
+    tracking_password: constructivism
+    tracking_uri: http://34.125.167.177/labo2024ba/
+usuario: alejandra_anconetani
+maquina: desktop-conceptual
+persistir: yes

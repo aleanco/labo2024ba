@@ -1,0 +1,36 @@
+PARAM:
+  input_exps: SC-0066
+  meta:
+    script: /src/wf-etapas/z2602_KA_evaluate_kaggle_SEMI.r
+  irepes_submit:
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+  - 7
+  - 8
+  - 9
+  - 10
+  - 11
+  - 12
+  - 13
+  - 14
+  - 15
+  - 16
+  - 17
+  - 18
+  - 19
+  - 20
+  envios_desde: 1600
+  envios_hasta: 2200
+  envios_salto: 100
+  competition: labo-i-conceptual-2024-ba
+time:
+  start: 20241019 211004
+  end: 20241019 211417
+status:
+  rank: 1
+  irepe: 1
+ganancias_suavizadas: 8.659

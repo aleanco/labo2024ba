@@ -1,0 +1,81 @@
+         used (Mb) gc trigger (Mb) max used (Mb)
+Ncells 294428 15.8     692348   37   478249 25.6
+Vcells 510705  3.9    8388608   64  1923783 14.7
+Loading required package: data.table
+Loading required package: yaml
+Loading required package: rlang
+
+Attaching package: ‘rlang’
+
+The following object is masked from ‘package:data.table’:
+
+    :=
+
+Loading required package: rlist
+Loading required package: mlflow
+Loading required package: digest
+Loading required package: ulimit
+z2602_KA_evaluate_kaggle_semillerio.r  START
+Verificando archivo : parametros.yml 
+Inicio del programa
+lectura tb_future_prediccion.txt
+Verificando archivo : ./SC-0066/tb_future_prediccion.txt 
+lectura tb_predicciones.txt
+Verificando archivo : ./SC-0066/tb_predicciones.txt 
+1 1 
+write prediccion Kaggle
+Columnas del dataset:  numero_de_cliente sem_1_1 Predicted 
+written prediccion Kaggle
+  0%|          | 0.00/368k [00:00<?, ?B/s]100%|██████████| 368k/368k [00:01<00:00, 210kB/s]
+res=  8.659000 
+20241019.211038	1	21	1	-1	1600	8.659	8.659
+write prediccion Kaggle
+Columnas del dataset:  numero_de_cliente sem_1_1 Predicted 
+written prediccion Kaggle
+  0%|          | 0.00/368k [00:00<?, ?B/s]100%|██████████| 368k/368k [00:01<00:00, 210kB/s]
+res=  8.439000 
+20241019.211114	1	21	1	-1	1700	8.439	8.439
+write prediccion Kaggle
+Columnas del dataset:  numero_de_cliente sem_1_1 Predicted 
+written prediccion Kaggle
+  0%|          | 0.00/368k [00:00<?, ?B/s]100%|██████████| 368k/368k [00:01<00:00, 210kB/s]
+res=  8.149000 
+20241019.211148	1	21	1	-1	1800	8.149	8.149
+write prediccion Kaggle
+Columnas del dataset:  numero_de_cliente sem_1_1 Predicted 
+written prediccion Kaggle
+  0%|          | 0.00/368k [00:00<?, ?B/s]100%|██████████| 368k/368k [00:01<00:00, 210kB/s]
+res=  7.839000 
+20241019.211223	1	21	1	-1	1900	7.839	7.839
+write prediccion Kaggle
+Columnas del dataset:  numero_de_cliente sem_1_1 Predicted 
+written prediccion Kaggle
+  0%|          | 0.00/368k [00:00<?, ?B/s]100%|██████████| 368k/368k [00:01<00:00, 209kB/s]
+res=  7.569000 
+20241019.211257	1	21	1	-1	2000	7.569	7.569
+write prediccion Kaggle
+Columnas del dataset:  numero_de_cliente sem_1_1 Predicted 
+written prediccion Kaggle
+  0%|          | 0.00/368k [00:00<?, ?B/s]100%|██████████| 368k/368k [00:01<00:00, 212kB/s]
+res=  7.709000 
+20241019.211332	1	21	1	-1	2100	7.709	7.709
+write prediccion Kaggle
+Columnas del dataset:  numero_de_cliente sem_1_1 Predicted 
+written prediccion Kaggle
+  0%|          | 0.00/368k [00:00<?, ?B/s]100%|██████████| 368k/368k [00:01<00:00, 212kB/s]
+res=  7.449000 
+20241019.211407	1	21	1	-1	2200	7.449	7.449
+20241019.211408	1	21	1	-1	1600	8.659	8.659
+20241019.211409	1	21	1	-1	1700	8.439	8.439
+20241019.211411	1	21	1	-1	1800	8.149	8.149
+20241019.211412	1	21	1	-1	1900	7.839	7.839
+20241019.211413	1	21	1	-1	2000	7.569	7.569
+20241019.211415	1	21	1	-1	2100	7.709	7.709
+20241019.211416	1	21	1	-1	2200	7.449	7.449
+Warning message:
+`as_integer()` is deprecated as of rlang 0.4.0
+Please use `vctrs::vec_cast()` instead.
+This warning is displayed once every 8 hours. 
+fin del programa
+Verificando archivo : tb_ganancias.txt 
+z2602_KA_evaluate_kaggle_semillerio.r  END
